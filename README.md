@@ -1,8 +1,9 @@
-# Running .NET Based Slight and Spin Applications On WASM/WASI Node Pool in AKS
+# Running .NET Based WebAssembly Applications and Components in AKS
 
-Sample project for demonstrating how to run a .NET based [Slight](https://github.com/deislabs/spiderlightning/tree/v0.1.0) and [Spin](https://developer.fermyon.com/spin/index) applications on WASM/WASI node pool in Azure Kubernetes Service. You can read more here:
-- [Experimenting With .NET & WebAssembly - Running .NET Based Spin Application On WASM/WASI Node Pool in AKS](https://www.tpeczek.com/2022/12/experimenting-with-net-webassembly.html)
-- [Experimenting With .NET & WebAssembly - Running .NET Based Slight Application On WASM/WASI Node Pool in AKS](https://www.tpeczek.com/2024/01/experimenting-with-net-webassembly.html)
+A collection of sample projects for demonstrating how to run a .NET based WebAssembly applications and components in Azure Kubernetes Service. You can read more here:
+
+- .NET based Spin application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2022/12/experimenting-with-net-webassembly.html))
+- .NET based Slight application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2024/01/experimenting-with-net-webassembly.html))
 
 ## Consulting and Professional Services
 
