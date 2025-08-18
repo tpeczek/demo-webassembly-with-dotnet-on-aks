@@ -1,9 +1,9 @@
-# Running .NET Based WebAssembly Applications and Components in AKS
+# Running .NET-Based WebAssembly Applications and Components in AKS
 
-A collection of sample projects for demonstrating how to run a .NET based WebAssembly applications and components in Azure Kubernetes Service. You can read more here:
+A collection of sample projects for demonstrating how to run a .NET-based WebAssembly applications and components in Azure Kubernetes Service. You can read more here:
 
-- .NET based Spin application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2022/12/experimenting-with-net-webassembly.html))
-- .NET based Slight application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2024/01/experimenting-with-net-webassembly.html))
+- .NET-based Spin application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2022/12/experimenting-with-net-webassembly.html))
+- .NET-based Slight application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2024/01/experimenting-with-net-webassembly.html))
 
 ## Consulting and Professional Services
 
