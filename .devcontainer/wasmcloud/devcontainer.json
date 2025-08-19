@@ -12,6 +12,7 @@
         }
     },
     "onCreateCommand": {
-		"wasmtime": "curl https://wasmtime.dev/install.sh -sSf | bash"
+        "wasmtime": "curl https://wasmtime.dev/install.sh -sSf | bash",
+        "wash": "curl -s https://packagecloud.io/install/repositories/wasmcloud/core/script.deb.sh | sudo bash && sudo apt install wash"
 	}
 }
