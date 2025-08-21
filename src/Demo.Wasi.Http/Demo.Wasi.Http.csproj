@@ -14,6 +14,6 @@
     <PackageReference Include="runtime.$(NETCoreSdkPortableRuntimeIdentifier).Microsoft.DotNet.ILCompiler.LLVM" Version="10.0.0-alpha.1.25118.1" />
   </ItemGroup>
   <ItemGroup>
-    <Wit Include="wit/wit.wasm" World="proxy" Registry="ghcr.io/webassembly/wasi/http:0.2.6" /> 
+    <Wit Include="wit/wit.wasm" World="proxy" Registry="ghcr.io/webassembly/wasi/http:0.2.0" /> 
   </ItemGroup>
 </Project>
