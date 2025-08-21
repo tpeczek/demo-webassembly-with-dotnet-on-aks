@@ -2,7 +2,7 @@
     "name": ".NET-Based Component on wasmCloud",
     "image": "mcr.microsoft.com/devcontainers/dotnet:10.0-preview",
     "features": {
-        "ghcr.io/devcontainers/features/powershell:1": {}
+        "ghcr.io/devcontainers/features/azure-cli:1": {}
     },
     "customizations": {
         "vscode": {
