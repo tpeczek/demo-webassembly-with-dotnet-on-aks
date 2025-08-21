@@ -1,0 +1,46 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: demo-wasi-http
+  annotations:
+    description: '.NET-based WASI HTTP component'
+spec:
+  components:
+    - name: http-component
+      type: component
+      properties:
+        # image: file://../src/Demo.Wasi.Http/bin/Debug/net10.0/wasi-wasm/native/Demo.Wasi.Http.wasm
+        image: crdotnetwasi.azurecr.io/demo-wasi-http:1.0.0
+      traits:
+        - type: spreadscaler
+          properties:
+            instances: 1
+    - name: httpserver
+      type: capability
+      properties:
+        image: ghcr.io/wasmcloud/http-server:0.22.0
+      traits:
+        - type: link
+          properties:
+            target: http-component
+            namespace: wasi
+            package: http
+            interfaces: [incoming-handler]
+            source_config:
+              - name: default-http
+                properties:
+                  # address: 127.0.0.1:8080
+                  address: 0.0.0.0:8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-wasi-http
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/instance: wasmcloud-host
+  type: LoadBalancer
