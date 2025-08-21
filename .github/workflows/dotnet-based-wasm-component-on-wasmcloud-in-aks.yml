@@ -7,7 +7,7 @@ env:
   LOCATION: swedencentral
   RESOURCE_GROUP: rg-dotnet-on-wasmcloud
   AKS_CLUSTER: aks-dotnet-on-wasmcloud
-  
+  CONTAINER_REGISTRY: crdotnetwasi
 jobs:
   create-aks-cluster-and-container-registry:
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
         az logout
         az cache purge
         az account clear
-  build-and-push-wasi-http-component:
+  build-and-push-wasm-component:
     needs: [create-aks-cluster-and-container-registry]
     runs-on: ubuntu-latest
     steps:
@@ -71,7 +71,30 @@ jobs:
       with:
         dotnet-version: '10.0.x'
         dotnet-quality: 'preview'
-    - name: Build
+    - name: Setup wash
+      run: |
+        curl -s https://packagecloud.io/install/repositories/wasmcloud/core/script.deb.sh | sudo bash
+        sudo apt install wash
+    - name: Build Component
       run: dotnet build ./src/Demo.Wasi.Http --configuration Release
+    - name: Log in to Azure
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Get ACR Credentials
+      run: |
+        echo "ACR_USERNAME=$(az acr credential show --name ${CONTAINER_REGISTRY} --query 'username')" >> $GITHUB_ENV
+        echo "ACR_PASSWORD=$(az acr credential show --name ${CONTAINER_REGISTRY} --query 'passwords[0].value')" >> $GITHUB_ENV
+    - name: Push Component
+      run: |
+        wash push ${CONTAINER_REGISTRY}.azurecr.io/demo-wasi-http:1.0.0 ./src/Demo.Wasi.Http/bin/Release/net10.0/wasi-wasm/native/Demo.Wasi.Http.wasm --user ${{ env.ACR_USERNAME }} --password ${{ env.ACR_PASSWORD }}
+    - name: Log Out From Azure
+      run: |
+        docker logout
+        az logout
+        az cache purge
+        az account clear
 
   
