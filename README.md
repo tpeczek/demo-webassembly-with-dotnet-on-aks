@@ -4,6 +4,7 @@ A collection of sample projects for demonstrating how to run a .NET-based WebAss
 
 - .NET-based Spin application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2022/12/experimenting-with-net-webassembly.html))
 - .NET-based Slight application on WASM/WASI node pool in AKS (you can read more [here](https://www.tpeczek.com/2024/01/experimenting-with-net-webassembly.html))
+- .NET-based Wasm component on wasmCloud in AKS
 
 ## Consulting and Professional Services
 
